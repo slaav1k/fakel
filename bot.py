@@ -75,6 +75,7 @@ def c(update, context):
 
 
 def m(update, context):
+    number = update.message.text.split()[-1]
     with open('example.csv', 'r', encoding="utf-8") as File:
         a = []
         reader = csv.reader(File)
@@ -82,7 +83,7 @@ def m(update, context):
             a.append(row)
     for i, sublist in enumerate(a):
         for y, element in enumerate(sublist):
-            if '002.' in element:
+            if number in element:
                 s = ''
                 b = ''
                 c = ''
