@@ -1,3 +1,4 @@
+import csv
 import datetime
 import random
 import telebot
@@ -17,7 +18,7 @@ total = 0
 user = ''
 s = []
 reply_keyboard = [['/info']]
-communication = [['/c'], ['/x'], ['/back']]
+communication = [['/c'], ['/x'], ['/m'], ['/back']]
 main_answer = [['/yes'], ['/no']]
 reply_close_timer = [['/close']]
 choicer = [['/1'], ['/2'], ['/3'], ['/4'], ['/main_window']]
@@ -73,6 +74,29 @@ def c(update, context):
             update.message.reply_text(f'{i}')
 
 
+def m(update, context):
+    with open('example.csv', 'r', encoding="utf-8") as File:
+        a = []
+        reader = csv.reader(File)
+        for row in reader:
+            a.append(row)
+    for i, sublist in enumerate(a):
+        for y, element in enumerate(sublist):
+            if '002.' in element:
+                s = ''
+                b = ''
+                c = ''
+                for i in a[0]:
+                    b += i
+                b = b.split(';')
+                for i in sublist:
+                    c += i
+                c = c.split(';')
+                for el in range(len(b)):
+                    s += f'{b[el]} - {c[el]}\n'
+                print(s)
+
+
 def help(update, context):
     update.message.reply_text(
         "Если что-то пошло не так пропишите или нажмите /start.")
@@ -84,7 +108,8 @@ def start(update, context):
     update.message.reply_text(
         f"Здравствуйте, {name}. \n"
         f"/c [номер гаража] узнать статус долга \n"
-        f"/x [номер гаража] [статус долга] установить(изменить) статус долга \n",
+        f"/x [номер гаража] [статус долга] установить(изменить) статус долга \n"
+        f"/m [номер гаража] посмотреть финансовый отчет",
         reply_markup=markup
     )
 
@@ -95,7 +120,8 @@ def menu(update, context):
     update.message.reply_text(
         f"Здравствуйте, {name}. \n"
         f"/c [номер гаража] узнать статус долга \n"
-        f"/x [номер гаража] [статус долга] установить(изменить) статус долга \n",
+        f"/x [номер гаража] [статус долга] установить(изменить) статус долга \n"
+        f"/m [номер гаража] посмотреть финансовый отчет",
         reply_markup=markup
     )
 
@@ -117,6 +143,7 @@ def main():
     dp.add_handler(CommandHandler("x", x))
     dp.add_handler(CommandHandler("info", info))
     dp.add_handler(CommandHandler("c", c))
+    dp.add_handler(CommandHandler("m", m))
     dp.add_handler(CommandHandler("no", menu))
     dp.add_handler(CommandHandler("main_window", menu))
     dp.add_handler(CommandHandler("close_keyboard", close_keyboard))
