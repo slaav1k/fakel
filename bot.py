@@ -95,6 +95,7 @@ def m(update, context):
                 for el in range(len(b)):
                     s += f'{b[el]} - {c[el]}\n'
                 print(s)
+                update.message.reply_text(f'{s}')
 
 
 def help(update, context):
