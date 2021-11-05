@@ -18,7 +18,7 @@ total = 0
 user = ''
 s = []
 reply_keyboard = [['/info']]
-communication = [['/c'], ['/x'], ['/m'], ['/back']]
+communication = [['/c'], ['/x'], ['/m'], ['/f'], ['/back']]
 main_answer = [['/yes'], ['/no']]
 reply_close_timer = [['/close']]
 choicer = [['/1'], ['/2'], ['/3'], ['/4'], ['/main_window']]
@@ -99,6 +99,31 @@ def m(update, context):
                 update.message.reply_text(f'{s}')
 
 
+def f(update, context):
+    number = update.message.text.split()[-1]
+    with open('numbers.csv', 'r', encoding="utf-8") as File:
+        a = []
+        reader = csv.reader(File)
+        for row in reader:
+            a.append(row)
+    for i, sublist in enumerate(a):
+        for y, element in enumerate(sublist):
+            if number in element:
+                s = ''
+                b = ''
+                c = ''
+                for i in a[0]:
+                    b += i
+                b = b.split(';')
+                for i in sublist:
+                    c += i
+                c = c.split(';')
+                for el in range(len(b)):
+                    s += f'{b[el]} - {c[el]}\n'
+                print(s)
+                update.message.reply_text(f'{s}')
+
+
 def help(update, context):
     update.message.reply_text(
         "Если что-то пошло не так пропишите или нажмите /start.")
@@ -111,7 +136,8 @@ def start(update, context):
         f"Здравствуйте, {name}. \n"
         f"/c [номер гаража] узнать статус долга \n"
         f"/x [номер гаража] [статус долга] установить(изменить) статус долга \n"
-        f"/m [номер гаража] посмотреть финансовый отчет",
+        f"/m [номер гаража] посмотреть финансовый отчет \n"
+        f"/f [номер гаража] посмотреть телефонные номера",
         reply_markup=markup
     )
 
@@ -123,7 +149,8 @@ def menu(update, context):
         f"Здравствуйте, {name}. \n"
         f"/c [номер гаража] узнать статус долга \n"
         f"/x [номер гаража] [статус долга] установить(изменить) статус долга \n"
-        f"/m [номер гаража] посмотреть финансовый отчет",
+        f"/m [номер гаража] посмотреть финансовый отчет\n"
+        f"/f [номер гаража] посмотреть телефонные номера",
         reply_markup=markup
     )
 
@@ -146,6 +173,7 @@ def main():
     dp.add_handler(CommandHandler("info", info))
     dp.add_handler(CommandHandler("c", c))
     dp.add_handler(CommandHandler("m", m))
+    dp.add_handler(CommandHandler("f", f))
     dp.add_handler(CommandHandler("no", menu))
     dp.add_handler(CommandHandler("main_window", menu))
     dp.add_handler(CommandHandler("close_keyboard", close_keyboard))
