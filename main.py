@@ -6,7 +6,7 @@ from telegram.ext import CommandHandler
 from telegram import ReplyKeyboardMarkup
 from telegram import ReplyKeyboardRemove
 import os
-from background import keep_alive
+
 
 from PIL import Image, ImageDraw, ImageFont
 
@@ -187,7 +187,7 @@ def close_keyboard(update, context):
 
 
 def main():
-  keep_alive()
+  
   updater = Updater(TOKEN)
   dp = updater.dispatcher
   updater.start_polling()
