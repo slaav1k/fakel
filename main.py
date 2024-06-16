@@ -198,9 +198,9 @@ def m(update, context):
 
                     image = Image.new('RGB', (800, 800), color=color_text)
                     draw = ImageDraw.Draw(image)
-                    # p_font = "/home/ubuntu/.local/lib/python3.6/site-packages/werkzeug/debug/shared/ubuntu.ttf"
-                    # font = ImageFont.truetype(p_font, 140)
-                    font = ImageFont.load_default()
+                    p_font = "/home/ubuntu/.local/lib/python3.6/site-packages/werkzeug/debug/shared/ubuntu.ttf"
+                    font = ImageFont.truetype(p_font, 140)
+                    # font = ImageFont.load_default()
                     draw.text((10, 30), text_image, fill='black', font=font)
                     update.message.reply_text(f'{s}')
                     tb.send_photo(update.message.chat_id, image)
