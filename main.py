@@ -152,7 +152,7 @@ def message_handler(update, context):
 
 def m(update, context):
     chat_id = update.message.chat_id
-    if phone_numbers[chat_id] == "79106114058" or phone_numbers[chat_id] == "79109061411":
+    if chat_id in phone_numbers and (phone_numbers[chat_id] == "79106114058" or phone_numbers[chat_id] == "79109061411"):
         number = update.message.text.split()[-1]
         with open('example.csv', 'r', encoding="utf-8") as File:
             a = []
