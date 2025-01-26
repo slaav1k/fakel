@@ -84,11 +84,11 @@ def message_handler(update, context):
                                 if status_dolgnika == 'Долга нет':
                                     text_image = 'DOLGA NET'
                                     color_text = 'green'
-                                elif status_dolgnika == 'Должен за 2024':
-                                    text_image = f"DOLGEN ZA\n2024\nDOLG=\n={ostatok_dolga}"
+                                elif status_dolgnika == 'Должен за 2025':
+                                    text_image = f"DOLGEN ZA\n2025\nDOLG=\n={ostatok_dolga}"
                                     color_text = 'yellow'
-                                elif status_dolgnika == 'Должен за 2023-2024':
-                                    text_image = f"DOLGEN ZA\n2023\nI 2024\nDOLG=\n={ostatok_dolga}"
+                                elif status_dolgnika == 'Должен за 2024-2025':
+                                    text_image = f"DOLGEN ZA\n2024\nI 2025\nDOLG=\n={ostatok_dolga}"
                                     color_text = 'orange'
                                 else:
                                     text_image = f"ZLOCSTNIY\nDOLGNIK\nDOLG=\n={ostatok_dolga}"
@@ -187,7 +187,7 @@ def m(update, context):
                         text_image = 'DOLGA NET'
                         color_text = 'green'
                     elif status_dolgnika == 'Должен за 2025':
-                        text_image = f"DOLGEN ZA\n2024\nDOLG=\n={ostatok_dolga}"
+                        text_image = f"DOLGEN ZA\n2025\nDOLG=\n={ostatok_dolga}"
                         color_text = 'yellow'
                     elif status_dolgnika == 'Должен за 2024-2025':
                         text_image = f"DOLGEN ZA\n2024\nI 2025\nDOLG=\n={ostatok_dolga}"
