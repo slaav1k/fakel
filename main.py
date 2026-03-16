@@ -101,7 +101,7 @@ def message_handler(update, context):
                                 # font = ImageFont.load_default()
                                 draw.text((10, 30), text_image, fill='black', font=font)
                                 update.message.reply_text(f'{s}')
-                                tb.send_photo(update.message.chat_id, image)
+                                tb.send_photo(update.message.chat_id, image, timeout=30)
             else:
                 update.message.reply_text(f'Номер телефона не найден в базе. Обратитесь к администрации. @slaav1k',
                                           reply_markup=markup_phone)
@@ -203,7 +203,7 @@ def m(update, context):
                     # font = ImageFont.load_default()
                     draw.text((10, 30), text_image, fill='black', font=font)
                     update.message.reply_text(f'{s}')
-                    tb.send_photo(update.message.chat_id, image)
+                    tb.send_photo(update.message.chat_id, image, timeout=30)
     else:
         update.message.reply_text(f'Поделитесь Вашим номером телефона', reply_markup=markup_phone)
 
