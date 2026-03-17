@@ -1,0 +1,46 @@
+# Секреты и конфиденциальные данные
+bot_secrets.py
+.env
+*.env
+
+# Временные файлы изображений
+temp_*.png
+temp_*.jpg
+temp_*.jpeg
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# Виртуальное окружение
+.venv/
+venv/
+env/
+ENV/
+env.bak/
+venv.bak/
+pythonenv*
+
+# Логи
+*.log
+*.log.*
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Базы данных
+*.db
+*.sqlite3
+
+# Дистрибутивы
+dist/
+build/
+*.egg-info/
